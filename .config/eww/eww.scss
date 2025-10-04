@@ -1,0 +1,27 @@
+.clock {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: none;
+  color: #c6d0f5;
+  font-family: 'MesloLGS Nerd Font';
+}
+
+.time-text {
+    font-size: 128px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -45px;
+    margin-left: -55px;
+}
+
+.date-text {
+    font-size: 48px;
+    margin-left: -200px;
+}
+
+.weekday-text {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: -10px;
+}

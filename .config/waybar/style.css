@@ -23,7 +23,8 @@
 #workspaces,
 #custom-power,
 #network,
-#pulseaudio {
+#pulseaudio,
+#battery {
     background-color: @surface0;
     color: @text;
     padding: 2px 8px;

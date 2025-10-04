@@ -1,0 +1,30 @@
+;; --- time source (updates every minute) ---
+(defpoll time-str :interval "5s" "date '+%H:%M'")
+(defpoll date-str :interval "60s" "date '+%b %Y'")
+(defpoll weekday-str :interval "60s" "date '+%A %d'")
+
+;; --- widget ---
+(defwidget clock-widget []
+    (box :class "clock"
+        :orientation "v"        ;; stack children top → bottom
+        
+        :space-evenly "false"
+        :halign "start"         ;; left-align text
+        :valign "start"         ;; stick to top of the window
+        (label :class "time-text" :text time-str :show-truncated "false")
+        (label :class "weekday-text" :text weekday-str :show-truncated "false")
+        (label :class "date-text" :text date-str :show-truncated "false")
+    )
+)
+
+;; --- window ---
+(defwindow clock
+  :geometry (geometry
+              :x "96px"
+              :y "54px"
+              :anchor "top left")
+  :monitor 0
+  :stacking "bg"              ;; draw above normal windows
+  :focusable false
+  :layer "overlay"            ;; Wayland layer-shell overlay
+  (clock-widget))
