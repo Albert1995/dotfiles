@@ -1,0 +1,52 @@
+// -*- mode: jsonc -*-
+{
+    // "height": 32, // Waybar height (to be removed for auto height)
+    "spacing": 4,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "custom/power"
+    ],
+    "clock": {
+        "interval": 1,
+        "format": "󰃭 {:%Y-%m-%d   %H:%M:%S}"
+    },
+    "custom/power": {
+        "format" : "⏻",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "  ",
+            "default": "  "
+        },
+        "persistent-workspaces": {
+		    "*": 5
+        }
+    },
+    "network": {
+        "interface": "wlan0",
+        "format": "  {essid} [{ipaddr}]",
+        "format-disconnected": "Disconnected"
+    },
+    "pulseaudio": {
+        "format": "  {volume}%",
+        "format-muted": " ",
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle"
+    }
+}
